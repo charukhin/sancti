@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жития святых</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F5F2E9;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.02) 50%, transparent 50%),
+                              linear-gradient(90deg, rgba(0, 0, 0, 0.02) 50%, transparent 50%);
+            background-size: 4px 4px;
+            font-family: 'Lora', serif;
+            color: #3C2F2F;
+            line-height: 1.6;
+            position: relative;
+            padding: 20px;
+        }
+
+        .scroll-box-15,
+        .scroll-box-5 {
+            padding: 0.5em 1em;
+            border: 1px solid #ccc;
+            margin-bottom: 1em;
+            background-color: #F5F2E9;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.02) 50%, transparent 50%),
+                              linear-gradient(90deg, rgba(0, 0, 0, 0.02) 50%, transparent 50%);
+            background-size: 4px 4px;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-box-15 {
+                max-height: 15em;
+                overflow-y: auto;
+            }
+
+            .scroll-box-5 {
+                max-height: 5em;
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .scroll-box-15,
+            .scroll-box-5 {
+                max-height: none;
+                overflow-y: visible;
+            }
+        }
+
+        .border-art-nouveau {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 100"><path d="M10 0 C15 20, 5 40, 10 60 C15 80, 5 90, 10 100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') repeat-y;
+            z-index: -1;
+        }
+
+        .border-left { left: 0; }
+        .border-right { right: 0; }
+
+        .container {
+            max-width: 800px;
+            margin-left: calc(250px + 20px);
+            padding: 0 20px;
+        }
+
+        .container.toc-hidden {
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2.5rem;
+            color: #C8102E;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            color: #8B5A2B;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .saints-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            color: #8B5A2B;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            word-spacing: 0.05em;
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+
+        ul.saints {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        ul.saints li {
+            margin-bottom: 20px;
+        }
+
+        ul.saints h3 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.4rem;
+            color: #C8102E;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+		ul.saints h3 {
+        text-align: center;
+        }
+
+        ul.saints a {
+            color: #C8102E;
+            text-decoration: none;
+        }
+
+        ul.saints a:hover {
+            text-decoration: underline;
+        }
+
+        ul.saints p {
+            margin-bottom: 10px;
+        }
+
+        ul.news {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        ul.news li {
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0 10 H20 C30 5, 40 15, 50 10 C60 5, 70 15, 80 10 H100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') no-repeat center;
+            background-size: contain;
+            margin: 20px 0;
+        }
+
+        .header-cross {
+            color: #3C2F2F;
+            font-size: 1.8rem;
+            vertical-align: middle;
+            line-height: normal;
+            margin: 0 5px;
+        }
+
+        .toc {
+            position: fixed;
+            top: 20px;
+            left: 15px;
+            width: 250px;
+            background: rgba(245, 242, 233, 0.9);
+            padding: 15px;
+        }
+
+        .toc a {
+            color: #8B5A2B;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .toc-toggle {
+            display: none;
+            background: #8B5A2B;
+            color: #F5F2E9;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-divider {
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0 10 H20 C30 5, 40 15, 50 10 C60 5, 70 15, 80 10 H100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') repeat-x center;
+            background-size: 100% auto;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .footer-text {
+            color: #8B5A2B;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .footer-text a {
+            color: #8B5A2B;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2, .section-title, .saints-title {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 0 10px;
+                margin-left: 0;
+            }
+
+            .container.toc-hidden {
+                margin: 0 auto;
+            }
+
+            .divider {
+                height: 15px;
+                margin: 15px 0;
+            }
+
+            .toc {
+                position: static;
+                width: 100%;
+                background: none;
+                padding: 0;
+                margin-bottom: 20px;
+                border: none;
+                display: none;
+            }
+
+            .toc.active {
+                display: block;
+            }
+
+            .toc-toggle {
+                display: block;
+            }
+
+            p {
+                margin-bottom: 15px;
+                text-indent: 1.5em;
+            }
+
+            .header-cross {
+                font-size: 1.4rem;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .footer-divider {
+                height: 15px;
+                background-size: 100% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="border-art-nouveau border-left"></div>
+    <div class="border-art-nouveau border-right"></div>
+    <div class="toc">
+        <a href="adalbert.html">Житие св. Адальберта Пражского</a>
+        <a href="colombini.html">Житие бл. Иоанна Коломбини</a>
+        <a href="fina.html">Легенда св. Фины из Сан-Джиминьяно</a>
+        
+    </div>
+    <div class="toc-toggle">Меню</div>
+    <div class="container">
+        <header>
+            <h1>VITAE <span class="header-cross">✠</span> SANCTORUM</h1>
+        </header>
+        <div class="divider"></div>
+        <section>
+            <h2 class="section-title">AD PIUM LECTOREM</h2>
+            <div class="scroll-box-15">
+                <p style="text-align: justify;">Возможно, <b><span style="color: #C8102E; font-weight: bold;">ТЫ</span></b> станешь святым. Мне этого очень-очень хотелось
+бы. Более того, дерзну утверждать, что Бог этого хочет. И бывает так, что
+хорошая книга, вовремя попавшая в руки, оказывается той крупинкой, что опускает
+чашу весов в нужную сторону.</p>
+
+<p style="text-align: justify;">Вот какой случай описан в известной книжице Фео Белькари, флорентинского
+гуманиста XV века:</p>
+
+<blockquote style="
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    background-color: #f9f6f2;
+    border-left: 4px solid #C8102E;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 1.1em;
+    line-height: 1.6;">
+	<p style="text-align: justify;">«В год Господень 1355-й, вернувшись однажды домой и желая
+поесть, Иоанн не обнаружил, вопреки обыкновению, готовой трапезы на столе и,
+рассердившись на жену и служанку, попрекал их за нерасторопность, ссылаясь на
+то, что ему по неотложным причинам надлежит поспешить обратно к торговым делам;
+на что его жена благодушно молвила в ответ: «Добра у тебя премного, а издержек
+– чуть, и что ты так хлопочешь?» И умоляла его набраться терпения, потому что
+поесть будет готово очень скоро. «А пока я распоряжусь насчёт обеда, – добавила
+она, – ты возьми эту книжку и почитай»; и положила перед ним томик житий
+святых. Но Иоанн в возмущении схватил книгу и, швырнув её на середину комнаты,
+молвил жене: «Это тебе больше нечего делать, кроме как легенды читать, а мне
+нужно торопиться обратно в лавку!» Однако, говоря эти слова и много других, он
+начал немного ощущать уколы совести, поднял книгу с пола, сел на место и, когда
+открыл её, предстала перед ним по Божьей воле чудесная история Марии
+Египетской, грешницы, что была обращена Богом к дивному благочестию.</p>
+<p style="text-align: justify;">Между тем, пока Иоанн читал, жена приготовила обед и звала
+его, коль скоро ему угодно, пожаловать к столу. Иоанн отвечал ей: «Теперь ты
+немножко погоди, пока я не дочитаю эту легенду». Повествование оказалось
+длинным, а поскольку оно было исполнено небесной мелодии, которая умягчала его
+сердце, то он не хотел прерывать чтения, пока не дошёл до самого конца».</p>
+</blockquote>
+
+<p style="text-align: justify;">Дальше начинается история нового святого – Иоанна (Джованни)
+Коломбини, рассудительного юродивого, чей подвиг мало напоминает тот, что
+совершала великая египетская пустынница. Но если не жажда подражания, то что же
+заставило случайного читателя «Золотой легенды» оставить богатство, семейную
+жизнь, сословные почести и метаться много лет по Италии с толпой оборванцев?
+«Небесная мелодия»! Больше нечему.</p>
+
+<p style="text-align: justify;">Не всякий современный читатель, открыв том Иакова
+Ворагинского, или «Цветочки», или «Жизнь пустынных отцов» Руфина, сразу ощутит
+этот тихий звук. Стиль древних (да и относительно новых) житий узнаваемо
+простоват, несмотря на унаследованные от риторов украшения, а сам сюжет
+зачастую переполнен общими местами и навязчивой дидактикой. Это чтение
+напоминает паломничество по пустыне: сухие кусты, невнятные шорохи, полустёртые
+следы на песке… однако, если уж оазис, то оазис! Опытный путешественник
+угадывает близость воды издалека; при постепенном, медленном чтении подобных книг
+вырабатывается особый слух. И «мелодия» проникает внутрь, оплодотворяет.</p>
+
+<p style="text-align: justify;">Но это труд. Сродни, пожалуй, урокам сольфеджио. «Обычно он
+читал главу из житий святых отцов каждый день, – пишет агиограф о святом
+Филиппе Нери, – но чтобы сделать чтение своё плодотворным, он делал это
+медленно и с паузами; а когда чувствовал от прочитанного тепло в себе, то не
+продолжал, а останавливался и обдумывал текст; когда же чувство спадало, продолжал
+чтение, и так последовательно двигался от отрывка к отрывку».</p>
+
+<p style="text-align: justify;">При вживании в традиционный (а он и в XIX, и в XX веке может
+оказаться в известном смысле традиционным) агиографический текст становится
+понятна безыскусность литературной формы и скупость в передаче внешних фактов –
+это, как церковный нудно-распевный речитатив, позволяет переключить внимание с
+работы автора на замысел Автора. </p>
+
+<p style="text-align: justify;">«Прекрасно! – возможно, скажешь ты, читатель. – Пойду полистаю
+«Луг духовный»». И будешь прав. Перед тобою разверзнутся россыпи самоцветов, заключённых
+в писаниях Мосха, и Двоеслова, и Метафраста, и Григория Турского, и Леонтия
+Неапольского, и Беды, и это всё не считая всем известных компиляций Димитрия
+Ростовского, успешно дополняемых год от года новейшими переводами ирландских,
+галльских, немецких житий, как правило, древних. Но если ты задержишься на этой
+страничке, то что я предложу тебе после такого пиршества?</p>
+
+<p style="text-align: justify;">Предложу продолжить. Продолжить начало знакомства. Ведь
+очевидно, что западные святые, жившие после IX века, знакомы русскоязычному
+читателю очень недостаточно. «Истоки францисканства», автобиография св.
+Игнатия, что-то ещё? Между тем перевода на русский язык до сей поры избежали
+агиографические шедевры авторов не последнего ряда, среди которых, ни много ни
+мало, учители Церкви, такие, как, например, Пётр Дамиани и Бернард Клервоский.
+А какие содержательные и при этом не лишённые литературного вкуса жития
+создавались в Новое время! Да, существуют сжатые или более-менее развёрнутые
+очерки, но они, увы, лишены той музыки, которая пленяет и согревает при
+неспешном чтении.</p>
+
+<p style="text-align: justify;">Кто ознакомился с «Портретами святых» Сикари, наверно, мог
+почувствовать, сколько ещё незнакомого обретается на западной оконечности
+континента святости, а «портреты» (как открытки с видами дальних стран) скорее
+дразнят жажду странствий, нежели утоляют её. Ведь в житиях хочется пожить. Как
+в полюбившемся городе. Придышаться к его воздуху, напитать взгляд его
+оттенками, проникнуться его звуками, его тишиной. Развёрнутые и по мере
+возможности аутентичные повествования помогают в этом.</p>
+
+<p style="text-align: justify;">Признаюсь, что именно упомянутый выше св. Филипп навёл меня
+на мысль взяться за перевод чрезвычайно популярной в прошлом книги Фео Белькари
+о блаженном Иоанне Коломбини (с неё как раз началась серия публикаций моих
+переводов на портале «Рускатолик»), и, едва приступив, я был заворожён
+диковатым образом этого ни на кого не похожего человека. Ещё раньше меня влёк
+образ основателя строгого Камальдульского ордена – св. Ромуальда, – и вот,
+выяснилось, что его житие считается немаловажным историческим памятником,
+который исследуют и комментируют современные учёные, а через своего
+ученика-миссионера Бруно Кверфуртского равеннский отшельник оказался связан с
+Русью. Любопытство… нет, настоящая жажда погнала меня дальше и не даёт
+остановиться до сих пор (как тут не вспомнить главного героя «Пятого персонажа»
+Робертсона Дэвиса!), ведь кто начал читать такие книги, тот потерян для
+беллетристики, теряет вкус к выдуманному; воистину «к святым, которые на земле,
+и к дивным Твоим — к ним все желание мое» (Пс. 15:3). Это страна чудес. Я
+надеюсь поделиться с тобой теми сокровищами, которыми она полна.</p>
+
+<p style="text-align: justify;">За долгое время сотрудничества с порталом «Рускатолик» я
+успел перевести десятки текстов. Однако до сих пор они были представлены
+разрозненно; многие не находятся через поисковые машины. Поэтому я решил
+собрать их в одном месте, как бы в скромной и тихой библиотеке.</p>
+
+<p style="text-align: justify;">Работа продолжается. «Если угодно будет Господу и живы
+будем», то, заполнив книгохранилище своими старыми переводами, я предложу тебе
+жизнеописания ещё многих Божьих людей. Подбираю я тексты как по принципу чисто
+литературной значимости, так и ради представления разных типов святости:
+отшельники, королевны, батраки, домохозяйки, юродивые, страстотерпицы,
+проповедники Евангелия среди страшных народов... В этих книгах неизменно
+чувствуется сила скромного, но мощного письменного слова, которое, как мне
+кажется, явственно доносит до сердца отзвук той самой тёплой мелодии, что может
+заражазить святостью даже тех, кто вовсе на неё не рассчитывал.</p>
+
+<p align="right"><i>К. Чарухин, переводчик</i></p>
+
+            </div>
+        </section>
+        <div class="divider"></div>
+        <section>
+            <h2 class="section-title">DIARIUM</h2>
+            <div class="scroll-box-5">
+                <ul class="news">
+                    <li>17 мая 2025: Добавлены жития св. Адальберта Пражского, бл. Иоанна Коломбини</li>
+                    <li>Продолжается работа над переводом жития св. Франциска Солано</li>
+                  
+                </ul>
+            </div>
+        </section>
+        <div class="divider"></div>
+        <section>
+            <h2 class="saints-title">SANCTI ET SANCTAE DEI</h2>
+            <ul class="saints">
+                <ul class="saints">
+    <li>
+        <h3><a href="aybert.html">Св. Войцех (Адальберт) Пражский</a></h3>
+        <p>История этого чешского принца поражает высоким трагизмом. Из тёмной эпохи, когда европейцы были кровожадны и необузданны, св. Войцех устремляется как бы в ещё более глубокое прошлое - на Север, в мир холода, язычества и неизбежной смерти. Рассказ в некоторые моменты напоминает "Сердце тьмы" Джозефа Конрада - читатель отчётливо ощущает атмосферу сгущающегося рока. Важно отметить, что автор его жития и сам впоследствии окончил жизнь мученическим подвигом.</p>
+    </li>
+    <li>
+        <h3><a href="colombini.html">Бл. Иоанн Коломбини</a></h3>
+        <p>Скупой купец, ставший пламенным юродивым и основателем ордена иезуатов. Его жизненным принципом было: "Выкликайте день и ночь на улицах и площадях имя Христа благословенного! Идёмте в ад, коли будет нужда, напоминать о Нём и славить Его! Раз весь мир туда идёт, потому что не помнит Его, тогда мы пойдём туда кричать и голосить: Слава славная святейшему имени Иисусову!" Именно он первый ввёл в употребление приветствие "Слава Исусу Христу", ставшее на века отличительной чертой католиков по всему миру. Автор его жития Фео Белькари был известным во Флоренции литератором, и его книжица вдохновляла в последующие века многих, включая великого Филиппа Нери</p>
+    </li>
+    <li>
+        <h3><a href="fina.html">Св. Фина из Сан-Джиминьяно</a></h3>
+        <p>Тихая и скромная девушка из не самого известного итальянского городка. Её не отличают ни великие апостольские путешествия, ни пустынножительство, ни яркое мученичество на глазах толпы. Всё что она сделала - тихо и кротко умерла от затяжной болезни. Но взгляд Бога маленьких делает великими. Доска, пропитанная гноем от ран девушки, поросла цветами. Ангелы били во все колокола в день её смерти. А после - даже своенравные черти и буйное море боялись её тихого имени.</p>
+    </li>
+    
+</ul>
+
+            </ul>
+        </section>
+        <footer>
+            <div class="footer-divider"></div>
+            <p class="footer-text">
+                Переводчик открыт для предложений со стороны книгоиздателей<br>
+                Связь через e-mail: <a href="mailto:firebug2017@gmail.com">firebug2017@gmail.com</a><br>
+                <strong>ПОДДЕРЖАТЬ ПЕРЕВОДЧИКА:</strong><br>
+                <a href="https://www.paypal.me/ConstantinCharukhin" target="_blank">PayPal.Me/ConstantinCharukhin</a><br>
+                или<br>
+                Счёт в евро: PL44102043910000660202252468<br>
+                Счёт в долл. США: PL49102043910000640202252476<br>
+                Получатель: CONSTANTIN CHARUKHIN<br>
+                Банк: BPKOPLPW
+            </p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toc = document.querySelector('.toc');
+            const container = document.querySelector('.container');
+            const tocToggle = document.querySelector('.toc-toggle');
+
+            if (!toc) {
+                container.classList.add('toc-hidden');
+            }
+
+            if (tocToggle) {
+                tocToggle.addEventListener('click', () => {
+                    toc.classList.toggle('active');
+                    tocToggle.textContent = toc.classList.contains('active') ? 'Скрыть меню' : 'Меню';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
