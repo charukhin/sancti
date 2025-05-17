@@ -1,0 +1,215 @@
+/* Минимальные стили для saint.html и футера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F5F2E9;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.02) 50%, transparent 50%), 
+                     linear-gradient(90deg, rgba(0, 0, 0, 0.02) 50%, transparent 50%);
+    background-size: 4px 4px;
+    font-family: 'Lora', serif;
+    color: #3C2F2F;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.border-art-nouveau {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 100"><path d="M10 0 C15 20, 5 40, 10 60 C15 80, 5 90, 10 100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') repeat-y;
+    z-index: -1;
+}
+
+.border-left { left: 0; }
+.border-right { right: 0; }
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    color: #C8102E;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem;
+    color: #C8102E;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-style: italic;
+	text-align: center;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 20px;
+    text-indent: 2em;
+}
+
+.author, .source {
+    font-size: 1.2rem;
+    color: #8B5A2B;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.divider {
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0 10 H20 C30 5, 40 15, 50 10 C60 5, 70 15, 80 10 H100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') no-repeat center;
+    background-size: contain;
+    margin: 30px 0;
+}
+
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: #8B5A2B;
+    text-decoration: none;
+}
+
+.logo .cross {
+    color: #C8102E;
+    font-size: 1.2rem;
+    margin: 0 5px;
+}
+
+.toc-header {
+    position: fixed;
+    top: 70px;
+    left: 15px;
+    width: 250px;
+    text-align: right;
+}
+
+.download-epub {
+    color: #C8102E;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-epub .book-icon::before {
+    content: '📖';
+    font-size: 1.2rem;
+}
+
+.download-epub:hover {
+    text-decoration: underline;
+}
+
+.toc {
+    position: fixed;
+    top: 100px;
+    left: 15px;
+    width: 250px;
+	
+	max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+	
+    background-color: #F5F2E9;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.02) 50%, transparent 50%), 
+                     linear-gradient(90deg, rgba(0, 0, 0, 0.02) 50%, transparent 50%);
+    background-size: 4px 4px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(245, 242, 233, 0.5); /* Лёгкая подложка для читаемости */
+}
+
+.toc a {
+    color: #8B5A2B;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+}
+
+.toc-toggle {
+    display: none;
+    background: #8B5A2B;
+    color: #F5F2E9;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.footer-divider {
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0 10 H20 C30 5, 40 15, 50 10 C60 5, 70 15, 80 10 H100" stroke="%238B5A2B" stroke-width="1" fill="none"/></svg>') repeat-x center;
+    background-size: 100% auto;
+    margin: 20px 0;
+}
+
+.footer-text {
+    color: #8B5A2B;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.footer-text a {
+    color: #8B5A2B;
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    .author, .source { font-size: 1rem; }
+    .container { padding: 0 10px; margin: 0 auto; }
+    .divider { height: 15px; margin: 20px 0; }
+    .toc-header { position: static; width: 100%; text-align: right; padding: 10px 0; }
+    .toc {
+        position: static;
+        width: 100%;
+        background-color: #F5F2E9;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.02) 50%, transparent 50%), 
+                         linear-gradient(90deg, rgba(0, 0, 0, 0.02) 50%, transparent 50%);
+        background-size: 4px 4px;
+        padding: 15px;
+        margin-bottom: 20px;
+        display: none;
+    }
+    .toc.active { display: block; }
+    .toc-toggle { display: block; }
+    .logo { position: static; text-align: center; margin-bottom: 20px; font-size: 1.2rem; }
+    .logo .cross { font-size: 1rem; }
+    p { margin-bottom: 15px; text-indent: 1.5em; }
+    .footer-text { font-size: 0.9rem; line-height: 1.6; }
+    .footer-divider { height: 15px; }
+}
