@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Жития святых</title>
+	
+	<meta name="description"
+      content="Библиотека житий святых в переводах К. Чарухина; великие католические святые; жития онлайн" />
+
+	<!-- Настройки роботов: разрешаем индексацию и переход по ссылкам -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Ключевые слова (не так важны, но можно) -->
+  <meta name="keywords" content="жития святых, католические святые, западныые святые">
+  
+  <!-- Канонический URL: чтобы не дублировать контент -->
+  <link rel="canonical" href="http://www.sancti.lat/index.html">
+  
+  
+  
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -314,6 +329,24 @@
                 background-size: 100% auto;
             }
         }
+		.book-image-divider {
+            display: block; /* Делает изображение блочным элементом */
+            margin: 20px auto; /* Выравнивает изображение по центру и добавляет отступы сверху и снизу */
+            max-width: 50%; /* Устанавливает максимальную ширину изображения в 50% от ширины его родительского контейнера */
+            height: auto; /* Автоматически поддерживает пропорции изображения */
+        }
+
+        /* Возможно, потребуется скорректировать верхний margin у section-title */
+        .section-title {
+             /* margin-top: 0;  Возможно, потребуется убрать или уменьшить верхний отступ, если он был задан */
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            color: #8B5A2B;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -330,7 +363,10 @@
         <header>
             <h1>VITAE <span class="header-cross">✠</span> SANCTORUM</h1>
         </header>
-        <div class="divider"></div>
+        </header>
+        
+        <img src="book-chorus-bg.png" alt="Изображение книги с житиями" class="book-image-divider">
+
         <section>
             <h2 class="section-title">AD PIUM LECTOREM</h2>
             <div class="scroll-box-15">
@@ -469,7 +505,8 @@
             <h2 class="section-title">DIARIUM</h2>
             <div class="scroll-box-5">
                 <ul class="news">
-                    <li>17 мая 2025: Добавлены жития св. Адальберта Пражского, бл. Иоанна Коломбини</li>
+                    <li>17 мая 2025: Добавлены жития св. Адальберта Пражского, бл. Иоанна Коломбини, 
+					св. Фины из Сан-Джеминьяно</li>
                     <li>Продолжается работа над переводом жития св. Франциска Солано</li>
                   
                 </ul>
