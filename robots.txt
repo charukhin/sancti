@@ -1,0 +1,3 @@
+User-agent: *       # Это означает «для всех роботов»
+Allow: /            # Разрешаем сканировать весь сайт
+Sitemap: https://www.sancti.lat/sitemap.xml   # ссылка на вашу карту
