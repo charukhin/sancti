@@ -45,8 +45,7 @@
 	},
 	"datePublished": "2019-07-31",  // Замените на реальную дату первой публикации другим сайтом, если известна
   "dateModified": "2025-05-17",  // Текущая дата публикации на вашем сайте
-  <!-- Если точная дата первой публикации неизвестна, 
-  укажите в datePublished дату публикации на вашем сайте (17 мая 2025) и добавьте dateModified-->
+  <!-- Если точная дата первой публикации неизвестна, укажите в datePublished дату публикации на вашем сайте (17 мая 2025) и добавьте dateModified-->
   "url": "https://www.sancti.lat/colombini.html",
   "description": "Первый перевод жития святого Иоанна Коломбини с итальянского на русский язык.",
   "license": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -3291,7 +3290,16 @@ culpa! и прошу прощения ради
             }
         });
     </script>
-</body>
-</html>
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tocToggle = document.querySelector('.toc-toggle');
+  var toc = document.querySelector('.toc');
+  if (tocToggle && toc) {
+    tocToggle.addEventListener('click', function() {
+      toc.classList.toggle('active');
+    });
+  }
+});
+</script>
 </body>
 </html>

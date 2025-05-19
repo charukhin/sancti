@@ -2330,7 +2330,16 @@ I Благочестивый, 814-840, – прим. пер</i>.). Он был �
             }
         });
     </script>
-</body>
-</html>
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tocToggle = document.querySelector('.toc-toggle');
+  var toc = document.querySelector('.toc');
+  if (tocToggle && toc) {
+    tocToggle.addEventListener('click', function() {
+      toc.classList.toggle('active');
+    });
+  }
+});
+</script>
 </body>
 </html>

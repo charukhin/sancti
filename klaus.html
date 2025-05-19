@@ -2950,7 +2950,16 @@ href="https://www.themathesontrust.org/images/bruderklaus-tableau_2.jpg">https:/
             }
         });
     </script>
-</body>
-</html>
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tocToggle = document.querySelector('.toc-toggle');
+  var toc = document.querySelector('.toc');
+  if (tocToggle && toc) {
+    tocToggle.addEventListener('click', function() {
+      toc.classList.toggle('active');
+    });
+  }
+});
+</script>
 </body>
 </html>
