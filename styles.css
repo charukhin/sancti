@@ -196,6 +196,11 @@ p {
 .footer-text a:hover {
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+  /* Отступ под высоту ваших фиксированных кнопок (20px отступ + высота элементов ~40px) */
+  body {
+    padding-top: 60px; /* подберите точное значение по своей высоте лого/кнопки */
+  }
 
 @media (max-width: 768px) {
     h1 { font-size: 1.8rem; }
@@ -230,4 +235,8 @@ p {
     p { margin-bottom: 15px; text-indent: 1.5em; }
     .footer-text { font-size: 0.9rem; line-height: 1.6; }
     .footer-divider { height: 15px; }
+}
+.download-epub {
+  position: relative;   /* чтобы сработал топ относительно исходного места */
+  top: -40px;           /* поднимаем вверх на 10px — подберите своё значение */
 }
