@@ -105,7 +105,7 @@ p {
 
 .toc-header {
     position: fixed;
-    top: 70px;
+    top: 90px;
     left: 15px;
     width: 250px;
     text-align: right;
@@ -132,7 +132,7 @@ p {
 
 .toc {
     position: fixed;
-    top: 100px;
+    top: 120px;
     left: 15px;
     width: 250px;
 
@@ -236,6 +236,7 @@ p {
     .footer-text { font-size: 0.9rem; line-height: 1.6; }
     .footer-divider { height: 15px; }
 }
+
 .download-epub {
   position: relative;   /* чтобы сработал топ относительно исходного места */
   top: -40px;           /* поднимаем вверх на 10px — подберите своё значение */
