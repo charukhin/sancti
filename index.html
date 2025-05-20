@@ -457,6 +457,21 @@
                 background-size: 100% auto;
             }
         }
+		@media (min-width: 1280px) {
+  /* Сбрасываем флоаты (на всякий случай) и уменьшаем верхний padding у header */
+  header {
+    clear: both;
+    /* вместо прежних 40px сверху делаем 15px */
+    padding-top: 5px;
+    /* padding-bottom оставляем прежним (40px) */
+  }
+
+  /* Если у вас h1 внутри header вдруг имеет свой margin-top, обнулим его */
+  header h1 {
+    margin-top: 0;
+  }
+}
+
     </style>
 </head>
 <body>
