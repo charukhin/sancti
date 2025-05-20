@@ -80,11 +80,13 @@ p {
 }
 
 .divider::before {
-    content: "✠";                       /* Вставляем символ креста */
-    color: #C8102E;                     /* Карминный цвет */
-    font-family: 'Cinzel Decorative', serif; /* Шрифт как у заголовков для стилистического единства */
-    font-size: 2rem;                    /* Размер крестика (можете настроить) */
-    line-height: 1;                     /* Убираем лишнее пространство по высоте строки */
+    content: "";
+    display: inline-block;
+    width: 100px;              /* подставь фактические размеры изображения */
+    height: 100px;
+    background-image: url('fleuron3.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .logo {
