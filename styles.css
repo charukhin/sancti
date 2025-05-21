@@ -251,7 +251,7 @@ p {
 @media (max-width: 768px) {
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.5rem; }
-	h3 {font-size:  1.3}
+	h3 {font-size:  1.3rem}
 }
     .author, .source { font-size: 1rem; }
     .container { padding: 0 10px; margin: 0 auto; }
@@ -293,19 +293,19 @@ p {
 /* Закрываем все неявные открытые блоки */
 }
 
+
+
 /* === Десктоп: перенос EPUB-ссылки вправо в правое поле === */
 @media screen and (min-width: 1280px) {
-  /* toc-header — правый сайдбар вместе с оглавлением */
   .toc-header {
-    position: fixed !important;  /* фиксируем */
-    top: 90px !important;        /* подправьте, если нужно */
-    right: 15px !important;      /* ставим справа */
-    left: auto !important;       /* отменяем левый отступ */
-    width: 250px;                /* или ваша ширина сайдбара */
-    text-align: left;            /* по вкусу */
+    position: fixed !important;
+    top: 90px !important;
+    right: 15px !important;
+    left: auto !important;
+    width: 250px;
+    text-align: left;
   }
 
-  /* Сбрасываем «подъём» ссылки */
   .toc-header .download-epub {
     position: static !important;
     top: auto !important;
