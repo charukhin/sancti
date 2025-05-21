@@ -258,3 +258,30 @@ p {
   position: relative;   /* чтобы сработал топ относительно исходного места */
   top: -40px;           /* поднимаем вверх на 10px — подберите своё значение */
 }
+/* Закрываем все неявные открытые блоки */
+}
+
+/* === Десктоп: перенос EPUB-ссылки вправо в правое поле === */
+@media screen and (min-width: 1280px) {
+  /* toc-header — правый сайдбар вместе с оглавлением */
+  .toc-header {
+    position: fixed !important;  /* фиксируем */
+    top: 90px !important;        /* подправьте, если нужно */
+    right: 15px !important;      /* ставим справа */
+    left: auto !important;       /* отменяем левый отступ */
+    width: 250px;                /* или ваша ширина сайдбара */
+    text-align: left;            /* по вкусу */
+  }
+
+  /* Сбрасываем «подъём» ссылки */
+  .toc-header .download-epub {
+    position: static !important;
+    top: auto !important;
+    margin: 0 !important;
+    display: inline-flex;
+  }
+}
+.download-epub {
+  /* превращаем весь текст в капслок */
+  text-transform: uppercase;
+}
