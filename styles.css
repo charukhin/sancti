@@ -82,10 +82,6 @@ p {
 .divider {
     text-align: center; /* Центрируем крестик */
     margin: 30px 0;     /* Сохраняем оригинальные отступы */
-    /* Свойства background и height удалены или закомментированы, так как они больше не нужны для SVG */
-    /* height: 20px; */
-    /* background: url(...) no-repeat center; */
-    /* background-size: contain; */
 }
 
 .divider::before {
@@ -150,6 +146,11 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    /* превращаем весь текст в капслок */
+    text-transform: uppercase;
+    /* Эти свойства .download-epub должны быть внутри медиазапроса для мобильных,
+       или сброшены в десктопном медиазапросе, если они специфичны для мобильных.
+       Я переместил их в мобильный медиазапрос ниже для чистоты. */
 }
 
 .download-epub .book-icon::before {
@@ -242,24 +243,23 @@ p {
 .footer-text a:hover {
     text-decoration: underline;
 }
-@media (max-width: 768px) {
-  /* Отступ под высоту ваших фиксированных кнопок (20px отступ + высота элементов ~40px) */
-  body {
-    padding-top: 60px; /* подберите точное значение по своей высоте лого/кнопки */
-  }
 
+/* Стили для мобильного просмотра (max-width: 768px) */
 @media (max-width: 768px) {
+    /* Отступ под высоту ваших фиксированных кнопок (20px отступ + высота элементов ~40px) */
+    body {
+        padding-top: 60px; /* подберите точное значение по своей высоте лого/кнопки */
+    }
+
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.5rem; }
-	h3 {font-size:  1.3rem}
-}
+    h3 { font-size: 1.3rem; } /* Исправлен синтаксис font-size */
+
     .author, .source { font-size: 1rem; }
     .container { padding: 0 10px; margin: 0 auto; }
 
-
     .divider {
         margin: 20px 0; /* Обновленные отступы для мобильной версии */
-        /* height: 15px;  Удалено, так как высота будет определяться контентом псевдоэлемента */
     }
     .divider::before {
         font-size: 1.5rem; /* Немного уменьшенный размер крестика для мобильных устройств */
@@ -284,24 +284,22 @@ p {
     p { margin-bottom: 15px; text-indent: 1.5em; }
     .footer-text { font-size: 0.9rem; line-height: 1.6; }
     .footer-divider { height: 15px; }
-}
 
-.download-epub {
-  position: relative;   /* чтобы сработал топ относительно исходного места */
-  top: -40px;           /* поднимаем вверх на 10px — подберите своё значение */
+    /* Мобильные стили для download-epub */
+    .download-epub {
+        position: relative;   /* чтобы сработал топ относительно исходного места */
+        top: -40px;           /* поднимаем вверх на 10px — подберите своё значение */
+    }
 }
-/* Закрываем все неявные открытые блоки */
-}
-
-
 
 /* === Десктоп: перенос EPUB-ссылки вправо в правое поле === */
 @media screen and (min-width: 1280px) {
+  /* toc-header — правый сайдбар вместе с оглавлением */
   .toc-header {
-    position: fixed !important;
-    top: 90px !important;
-    right: 15px !important;
-    left: auto !important;
+    position: fixed !important;  /* фиксируем */
+    top: 90px !important;        /* подправьте, если нужно */
+    right: 15px !important;      /* ставим справа */
+    left: auto !important;       /* отменяем левый отступ */
     width: 250px;
     text-align: left;
   }
@@ -312,8 +310,4 @@ p {
     margin: 0 !important;
     display: inline-flex;
   }
-}
-.download-epub {
-  /* превращаем весь текст в капслок */
-  text-transform: uppercase;
 }
