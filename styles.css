@@ -97,7 +97,27 @@ p {
     background-repeat: no-repeat;
     background-position: center;
 }
+.book-divider {
+    background: none;
+    height: 50px; /* Adjust this height to match your image */
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+}
 
+.book-divider::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0; /* Or 'top: 0;' if you want it at the top of the div */
+    width: 100%;
+    height: 50px; /* Needs to be the same height as the .body-divider */
+    background-image: url('branch02.png'); /* Ensure this path is correct */
+    background-repeat: repeat-x;
+    background-position: bottom left; /* Or 'top left;' */
+    background-size: auto 50px;
+    pointer-events: none;
+}
 .logo {
     position: fixed;
     top: 20px;
