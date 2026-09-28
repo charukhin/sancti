@@ -4,7 +4,7 @@
 
   <url>
        <loc>https://www.sancti.lat/index.html</loc>
-       <lastmod>2026-09-28T19:06:37+00:00</lastmod>
+       <lastmod>2026-09-28T20:51:18+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
@@ -170,6 +170,11 @@
   <url>
        <loc>https://www.sancti.lat/limana.html</loc>
        <lastmod>2025-06-02T00:00:00+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.sancti.lat/seraphino.html</loc>
+       <lastmod>2026-09-28T00:00:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
